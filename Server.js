@@ -19,16 +19,16 @@ const cors = require("cors");
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const helmet = require("helmet");
 
 // App Initialization
 const app = express();
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://harithi-fashion-picks.web.app'],
+  credentials: true
+}));
 app.use(express.json());
+app.use(helmet());
 
 // Cloudinary Config
 cloudinary.config({
